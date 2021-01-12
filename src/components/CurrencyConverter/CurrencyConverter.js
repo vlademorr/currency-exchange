@@ -1,6 +1,7 @@
 import React from "react";
 import {ConverterInputGroup} from "../InputGroups"
-import {ConverterContainer} from "./style";
+import {Tabs} from "../Tabs";
+import {ConverterContainer, TabsContainer} from "./style";
 
 const CurrencyConverter = () => {
   const testArr = [
@@ -42,18 +43,23 @@ const CurrencyConverter = () => {
      }
     ]
   return(
-    <ConverterContainer>
-      <p>Changing:</p>
-      <ConverterInputGroup
-        currencyArr={testArr}
-        defaultCurrency={testArr[0].cc}
-      />
-      <p>Getting:</p>
-      <ConverterInputGroup
-        currencyArr={testArr}
-        defaultCurrency={testArr[1].cc}
-      />
-    </ConverterContainer>
+    <>
+      <TabsContainer>
+          <Tabs/>
+        </TabsContainer>
+      <ConverterContainer>
+        <p>Changing:</p>
+        <ConverterInputGroup
+          currencyArr={testArr}
+          defaultCurrency={testArr[0].cc}
+        />
+        <p>Getting:</p>
+        <ConverterInputGroup
+          currencyArr={testArr}
+          defaultCurrency={testArr[1].cc}
+        />
+      </ConverterContainer>
+    </>
   )
 }
 

@@ -4,8 +4,8 @@ import {ListItemContainer} from "./style";
 const ExchangeRatesListItem = ({currency}) => {
   return(
     <ListItemContainer>
-      <p>{currency.cc} - {currency.txt}: </p>
-      <p>{currency.rate}</p>
+      <p>Currency: {currency.currency}</p>
+      <p>Value: {currency.value}</p>
     </ListItemContainer>
   )
 }

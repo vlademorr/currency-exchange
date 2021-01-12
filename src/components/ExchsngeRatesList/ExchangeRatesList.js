@@ -1,57 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {connect} from "react-redux";
+import {fetchExchangeRates} from "../../actions";
 import {Row, Col} from "react-bootstrap";
 import {Tabs} from "../Tabs";
 import {Container, ColStyles} from "./style";
 import {ExchangeRatesListItem} from "../ExchsngeRatesListItem";
 
-const ExchangeRatesList = () => {
-  const testArr = [
-    { 
-    "r030":36,"txt":"Австралійський долар","rate":22.0522,"cc":"AUD","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":124,"txt":"Канадський долар","rate":22.3109,"cc":"CAD","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":156,"txt":"Юань Женьміньбі","rate":4.3822,"cc":"CNY","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":191,"txt":"Куна","rate":4.6181,"cc":"HRK","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":203,"txt":"Чеська крона","rate":1.3348,"cc":"CZK","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":208,"txt":"Данська крона","rate":4.6927,"cc":"DKK","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":344,"txt":"Гонконгівський долар","rate":3.6481,"cc":"HKD","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":348,"txt":"Форинт","rate":0.097453,"cc":"HUF","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":356,"txt":"Індійська рупія","rate":0.38687,"cc":"INR","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":360,"txt":"Рупія","rate":0.0020349,"cc":"IDR","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":376,"txt":"Новий ізраїльський шекель","rate":8.8862,"cc":"ILS","exchangedate":"11.01.2021"
-     }
-    ,{ 
-    "r030":392,"txt":"Єна","rate":0.27484,"cc":"JPY","exchangedate":"11.01.2021"
-     }
-    ]
+const ExchangeRatesList = ({
+  fetchExchangeRates, 
+  exchangeRates,
+  loading
+}) => {
+  useEffect(() => {
+    fetchExchangeRates()
+  }, [fetchExchangeRates])
   return(
     <Container>
       <Tabs/>
       <div>
         <Row as="ul">
           {
-            (testArr).map((currency) => {
+            (exchangeRates).map((currency) => {
               return (
-                <Col as="li" xl={4} lg={6} md={6} sm={12} xs={12} key={currency.cc} style={ColStyles}>
+                <Col as="li" xl={4} lg={6} md={6} sm={12} xs={12} key={currency.currency} style={ColStyles}>
                   <ExchangeRatesListItem
                     currency={currency}
                   />
@@ -65,4 +36,19 @@ const ExchangeRatesList = () => {
   )
 }
 
-export default ExchangeRatesList;
+const mapStateToProps = ({
+  loading,
+  exchangeRates
+}) => {
+  return {
+    loading,
+    exchangeRates
+  };
+};
+
+
+const mapDispatchToProps = {
+  fetchExchangeRates
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExchangeRatesList);
