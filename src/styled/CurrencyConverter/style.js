@@ -6,6 +6,9 @@ export const ConverterContainer = styled.div`
 `;
 
 export const TabsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 800px;
   margin: 0 auto;
 `;
