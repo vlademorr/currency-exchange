@@ -44,7 +44,7 @@ const ConverterInputGroup = ({
     exchangeCurrency.currency,
     exchangeRates,
     currencyValue.userValue
-  ])
+  ]);
 
   const onSubmit = ({defaultCurrencyConverter}) => {
     setCurrencyValue({
