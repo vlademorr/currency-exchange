@@ -1,17 +1,21 @@
-import ExchangeRatesListItem from "./ExchangeRatesListItem";
-import ConverterInputGroup from "./InputGroups/ConverterInputGroup";
-import ExchangeRatesList from "./ExchangeRatesList";
-import CurrencyConverter from "./CurrencyConverter";
-import DropdownCurrencyList from "./InputGroups/DropdownCurrencyList";
-import Spinner from "./Spinner";
-import Tabs from "./Tabs";
+import ExchangeRatesRow from './ExchangeRatesRow';
+import ConverterInputs from './ConverterInputs';
+import ExchangeRatesTable from './ExchangeRatesTable';
+import CurrencyConverter from './CurrencyConverter';
+import CurrencyDropdown from './CurrencyDropdown';
+import Spinner from './Spinner';
+import Navbar from './Navbar';
+import Popover from './Popover';
+import ErrorAlert from './ErrorAlert';
 
 export{
-  ExchangeRatesListItem,
-  ConverterInputGroup,
+  ExchangeRatesRow,
+  ConverterInputs,
   CurrencyConverter,
-  ExchangeRatesList,
-  DropdownCurrencyList,
+  ExchangeRatesTable,
+  CurrencyDropdown,
   Spinner,
-  Tabs
+  Navbar,
+  Popover,
+  ErrorAlert
 };

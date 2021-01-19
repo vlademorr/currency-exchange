@@ -1,2 +1,10 @@
-npm i - to install everything necessary for the project; 
-npm start - to start a project;
+# To install
+To install everything necessary for the project
+```
+npm i
+```
+# To start
+To start a project
+```
+npm start
+```
