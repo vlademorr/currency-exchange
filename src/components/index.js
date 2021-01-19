@@ -8,7 +8,7 @@ import Navbar from './Navbar';
 import Popover from './Popover';
 import ErrorAlert from './ErrorAlert';
 
-export{
+export {
   ExchangeRatesRow,
   ConverterInputs,
   CurrencyConverter,
