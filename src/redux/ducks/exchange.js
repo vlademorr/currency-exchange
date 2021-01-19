@@ -132,11 +132,11 @@ const reducer = (state = initialState, action) => {
       exchangeRates: [...state.exchangeRates]
     };
     default:
-        return state;
+      return state;
   }
 };
 
-export{
+export {
   reducer,
   requestExchangeRates,
   requestExchangeRatesSuccess,
