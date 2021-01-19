@@ -18,4 +18,4 @@ const CenteredCol = {
 export {
   ExchangeRate,
   CenteredCol
-}
+};
