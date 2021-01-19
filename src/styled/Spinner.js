@@ -8,4 +8,4 @@ const SpinnerCentered = styled.div`
 
 export {
   SpinnerCentered
-}
+};
