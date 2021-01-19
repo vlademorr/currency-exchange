@@ -17,11 +17,11 @@ const DropdownCurrencyList = ({
   let currencyValue = "";
 
   if (currencyType === "default") {
-    currencyAction = changeDefaultCurrency
-    currencyValue = baseCurrency.currency
+    currencyAction = changeDefaultCurrency;
+    currencyValue = baseCurrency.currency;
   } else if (currencyType === "exchange") {
-    currencyAction = changeExchangeCurrency
-    currencyValue = exchangeCurrency.currency
+    currencyAction = changeExchangeCurrency;
+    currencyValue = exchangeCurrency.currency;
   }
 
   return (
