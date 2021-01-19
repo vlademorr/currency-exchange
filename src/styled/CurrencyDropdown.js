@@ -16,4 +16,4 @@ const DropdownScroll = styled.div`
 export {
   DropdownCentered,
   DropdownScroll
-}
+};
