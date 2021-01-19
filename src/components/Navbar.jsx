@@ -6,7 +6,7 @@ const Navbar = () => {
   const history = useHistory();
   const linkTo = url => {
     history.push(`/${url}`);
-  }
+  };
 
   return (
     <NavbarBootstrap bg="primary" variant="dark">
@@ -16,7 +16,7 @@ const Navbar = () => {
         <Nav.Link onClick={() => linkTo("CurrencyConverter")}>Currency Converter</Nav.Link>
       </Nav>
     </NavbarBootstrap>
-  )
+  );
 };
 
 export default Navbar;
