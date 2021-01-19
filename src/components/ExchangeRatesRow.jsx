@@ -15,7 +15,7 @@ const ExchangeRatesRow = ({favoriteCurrency, currency}) => {
   const toggleFavorite = () => {
     setFavorite(!favorite);
     setFavoriteLocalStorage(currency.currency);
-    favoriteCurrency(currency.currency)
+    favoriteCurrency(currency.currency);
   };
 
   return (
