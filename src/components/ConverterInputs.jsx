@@ -125,7 +125,7 @@ const ConverterInputGroup = ({
         </Col>  
         <Col></Col>
       </Row>
-  )
+  );
 };
 
 const mapStateToProps = ({exchangeCurrency}) => (
