@@ -29,11 +29,8 @@ const ErrorAlert = ({error}) => {
         <Col></Col>
       </Row>
     </Container>
-
-  )
-  // () => setShow(true)
-
-}
+  );
+};
 
 const mapStateToProps = ({error}) => (
   {error}
