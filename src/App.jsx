@@ -13,17 +13,15 @@ const App = ({fetchExchangeRates, baseCurrency}) => {
   }, [fetchExchangeRates, baseCurrency]);
   
   return (
-    <>
+    <Router>
       <ErrorAlert/>
-      <Router>
-        <Navbar/>
-        <Switch>
-          <Route path="/" exact component={ExchangeRatesTable}/>
-          <Route path="/ExchangeRates" exact component={ExchangeRatesTable}/>
-          <Route path="/CurrencyConverter" exact component={CurrencyConverter}/>
-        </Switch>
-      </Router>
-    </>
+      <Navbar/>
+      <Switch>
+        <Route path="/" exact component={ExchangeRatesTable}/>
+        <Route path="/ExchangeRates" exact component={ExchangeRatesTable}/>
+        <Route path="/CurrencyConverter" exact component={CurrencyConverter}/>
+      </Switch>
+    </Router>
   );
 };
 
