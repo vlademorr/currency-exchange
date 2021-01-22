@@ -13,9 +13,9 @@ const CenteredCol = {
   textAlign: 'center',
   alignSelf: 'center',
   height: '140px'
-};
+} as const;
 
 export {
   ExchangeRate,
   CenteredCol
-}
+};

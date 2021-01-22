@@ -11,4 +11,4 @@ const ErrorContainer = styled.div`
 
 export {
   ErrorContainer
-}
+};

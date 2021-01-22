@@ -11,57 +11,55 @@ import {
 } 
 from 'react-bootstrap';
 
-import {Spinner, CurrencyDropdown, Popover} from './';
+import {Spinner, CurrencyDropdown, Popover} from '.';
 
 import {CenteredCol, ExchangeRate} from '../styled';
+import {ICurrencyConverter, IReducerCurrency, IReducer} from '../types';
 
-
-const ConverterInputGroup = ({
-  exchangeCurrency,
-  exchangeRates
+const CurrencyConverter: React.FC<ICurrencyConverter> = ({
+  exchangeRates,
+  exchangeCurrency
 }) => {
   const [currencyValue, setCurrencyValue] = useState({
     userValue: 1,
-    exchangeValue: null,
-    resultExchangeValue: null
+    exchangeValue: 0,
+    resultExchangeValue: 0
   });
 
   useEffect(() => {
     if (!exchangeRates.length) return;
-    exchangeRates.forEach(item => {
+    exchangeRates.forEach((item: IReducerCurrency) => {
       if (item.currency === exchangeCurrency.currency) {
-          setCurrencyValue(
-            {
-              userValue: currencyValue.userValue, 
-              exchangeValue: item.rate,
-              resultExchangeValue: currencyValue.userValue * item.rate
-            }
-          )
-        }
+          setCurrencyValue({
+            userValue: currencyValue.userValue, 
+            exchangeValue: item.rate,
+            resultExchangeValue: currencyValue.userValue * item.rate
+          });
+        };
     });
   },[
     exchangeRates.length,
     exchangeCurrency.currency,
     exchangeRates,
     currencyValue.userValue
-  ])
+  ]);
 
-  const onSubmit = ({defaultCurrencyConverter}) => {
+  const onSubmit = ({defaultCurrencyConverter}: {defaultCurrencyConverter: number}) => {
     setCurrencyValue({
       userValue: defaultCurrencyConverter,
       exchangeValue: currencyValue.exchangeValue,
       resultExchangeValue: defaultCurrencyConverter * currencyValue.exchangeValue
-    })
+    });
   };
 
   return (
-    !exchangeRates.length ?
+    !exchangeRates.length ? (
       <Container>
         <Spinner/>
       </Container>
-    :
+    ) : (
       <Row>
-        <Col></Col>
+        <Col/>
         <Col xs={2} sm={7} md={5} lg={4} xl={4} style={CenteredCol}>
           <h4>Currency Converter</h4>
           <Formik
@@ -123,13 +121,15 @@ const ConverterInputGroup = ({
             }
           </Formik> 
         </Col>  
-        <Col></Col>
+        <Col/>
       </Row>
-  )
+    )
+  );
 };
 
-const mapStateToProps = ({exchangeCurrency}) => (
-  {exchangeCurrency}
-);
+const mapStateToProps = ({exchangeRates, exchangeCurrency}: IReducer): ICurrencyConverter => ({
+  exchangeRates,
+  exchangeCurrency
+});
 
-export default connect(mapStateToProps)(ConverterInputGroup);
+export default connect(mapStateToProps)(CurrencyConverter);

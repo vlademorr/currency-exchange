@@ -2,41 +2,36 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Alert, Container, Row, Col} from 'react-bootstrap';
 
+import {IReducer, IError} from '../types';
 import {ErrorContainer} from '../styled';
 
-const ErrorAlert = ({error}) => {
+const ErrorAlert: React.FC<IError> = ({error}) => {
   const [show, setShow] = useState(true);
+
+  if(!error || !show) return null;
+
   return (
-    (!error || !show)
-    ?
-    null
-    :
     <Container>
       <Row>
-        <Col></Col>
+        <Col/>
         <Col xs={8} sm={8} md={6} lg={3} xl={3}>
         <ErrorContainer>
           <Alert variant="danger" onClose={() => setShow(false)} dismissible>
             <Alert.Heading>Error</Alert.Heading>
             <p>
               Somthing was wrong
-              <br/>
-              Error: {error}
             </p>
           </Alert>
         </ErrorContainer>
         </Col>
-        <Col></Col>
+        <Col/>
       </Row>
     </Container>
+  );
+};
 
-  )
-  // () => setShow(true)
-
-}
-
-const mapStateToProps = ({error}) => (
-  {error}
-);
+const mapStateToProps = ({error}: IReducer): IError => ({
+  error
+});
 
 export default connect(mapStateToProps)(ErrorAlert);

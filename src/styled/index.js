@@ -1,4 +1,4 @@
-import {ExchangeRate, CenteredCol} from './ConverterInputs';
+import {ExchangeRate, CenteredCol} from './CurrencyConverter';
 import {DropdownCentered, DropdownScroll} from './CurrencyDropdown';
 import {TableContainer, DropdownContainer} from './ExchsngeRatesTable';
 import {PopoverButton} from './Popover';
@@ -15,4 +15,4 @@ export {
   PopoverButton,
   SpinnerCentered,
   ErrorContainer
-}
+};
