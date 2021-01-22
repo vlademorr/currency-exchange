@@ -60,7 +60,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
     ) : (
       <Row>
         <Col/>
-        <Col xs={2} sm={7} md={5} lg={4} xl={4} style={CenteredCol}>
+        <Col xs={3} sm={7} md={5} lg={3} xl={3} style={CenteredCol}>
           <h4>Currency Converter</h4>
           <Formik
             validationSchema={
@@ -86,7 +86,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
                     <Form.Row>
                       <Col style={CenteredCol}>
                         <Form.Group controlId="validationFormik01">
-                          <h6>Default Currency</h6>
+                          <h6>Default <br/> Currency</h6>
                           <CurrencyDropdown currencyType="default"/>
                           <Form.Control
                             type="number"
@@ -108,7 +108,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
                         />
                       </Col>
                       <Col style={CenteredCol}>
-                        <h6>Exchange Currency</h6>
+                        <h6>Exchange <br/> Currency</h6>
                         <CurrencyDropdown currencyType="exchange"/>
                         <ExchangeRate>
                           {Math.round(currencyValue.resultExchangeValue * 100 + Number.EPSILON) / 100}

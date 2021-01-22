@@ -7,6 +7,7 @@ import {DropdownCentered, DropdownScroll} from '../styled';
 import {
   ICurrencyDropdown, 
   IReducer,
+  ICurrencyDropdownState,
   IReducerCurrency, 
   IChangeCurrency
 } from '../types';
@@ -59,11 +60,7 @@ const mapStateToProps = ({
   baseCurrency,
   exchangeRates,
   exchangeCurrency
-}: IReducer): {
-  baseCurrency: IReducerCurrency, 
-  exchangeRates: IReducerCurrency[], 
-  exchangeCurrency: IReducerCurrency
-} => ({
+}: IReducer): ICurrencyDropdownState => ({
   baseCurrency,
   exchangeRates,
   exchangeCurrency

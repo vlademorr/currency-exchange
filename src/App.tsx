@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {ExchangeRatesTable, CurrencyConverter, Navbar, ErrorAlert} from './components';
 
 import {fetchExchangeRates} from './redux/ducks/exchange';
-import {IApp, IReducer, IReducerCurrency} from './types';
+import {IApp, IReducer, IAppState} from './types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC<IApp> = ({fetchExchangeRates, baseCurrency}) => {
@@ -26,7 +26,7 @@ const App: React.FC<IApp> = ({fetchExchangeRates, baseCurrency}) => {
   );
 };
 
-const mapStateToProps = ({baseCurrency}: IReducer): {baseCurrency: IReducerCurrency} => ({
+const mapStateToProps = ({baseCurrency}: IReducer): IAppState => ({
   baseCurrency
 });
 
