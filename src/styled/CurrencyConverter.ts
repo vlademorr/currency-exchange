@@ -9,10 +9,10 @@ const ExchangeRate = styled.div`
   border-radius: 5px;
 `;
 
-const CenteredCol = {
-  textAlign: 'center',
-  alignSelf: 'center'
-} as const;
+const CenteredCol = styled.div`
+  text-align: center;
+  align-self: center;
+`;
 
 export {
   ExchangeRate,

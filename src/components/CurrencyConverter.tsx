@@ -14,7 +14,7 @@ from 'react-bootstrap';
 import {Spinner, CurrencyDropdown, Popover} from '.';
 
 import {CenteredCol, ExchangeRate} from '../styled';
-import {ICurrencyConverter, IReducerCurrency, IReducer} from '../types';
+import {ICurrencyConverter, IReducerCurrency} from '../types';
 
 const CurrencyConverter: React.FC<ICurrencyConverter> = ({
   exchangeRates,
@@ -61,66 +61,74 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
       <Container>
         <Row>
           <Col/>
-          <Col xs={3} sm={7} md={5} lg={3} xl={3} style={CenteredCol}>
-            <h4>Currency Converter</h4>
-            <Formik
-              validationSchema={
-                yup.object({    
-                  defaultCurrencyConverter: yup.number().required()
-                })
-              }
-              onSubmit={onSubmit}
-              initialValues={{
-                defaultCurrencyConverter: currencyValue.userValue
-              }}
-            >
-              {
-                ({
-                  handleSubmit,
-                  handleChange,
-                  values,
-                  touched,
-                  errors
-                }) => (
-                  <Row>
-                    <Form noValidate onSubmit={handleSubmit}>
-                      <Form.Row>
-                        <Col style={CenteredCol}>
-                          <Form.Group controlId="validationFormik01">
-                            <h6>Default <br/> Currency</h6>
-                            <CurrencyDropdown currencyType="default"/>
-                            <Form.Control
-                              type="number"
-                              name="defaultCurrencyConverter"
-                              value={values.defaultCurrencyConverter}
-                              onChange={handleChange}
-                              isValid={touched.defaultCurrencyConverter && !errors.defaultCurrencyConverter}
-                            />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                          </Form.Group>
-                        </Col>
-                        <Col style={CenteredCol}>
-                          <Button type="submit" variant="success">Change</Button>
-                          <Popover
-                            title="Need help?"
-                            description="Select the currency you need then enter
-                              the required amount on the left to 
-                              convert and get it on the right."
-                          />
-                        </Col>
-                        <Col style={CenteredCol}>
-                          <h6>Exchange <br/> Currency</h6>
-                          <CurrencyDropdown currencyType="exchange"/>
-                          <ExchangeRate>
-                            {Math.round(currencyValue.resultExchangeValue * 100 + Number.EPSILON) / 100}
-                          </ExchangeRate>
-                        </Col>
-                      </Form.Row>
-                    </Form>
-                  </Row>
-                )
-              }
-            </Formik> 
+          <Col xs={3} sm={7} md={5} lg={3} xl={3}>
+            <CenteredCol>
+              <h4>Currency Converter</h4>
+              <Formik
+                validationSchema={
+                  yup.object({    
+                    defaultCurrencyConverter: yup.number().required()
+                  })
+                }
+                onSubmit={onSubmit}
+                initialValues={{
+                  defaultCurrencyConverter: currencyValue.userValue
+                }}
+              >
+                {
+                  ({
+                    handleSubmit,
+                    handleChange,
+                    values,
+                    touched,
+                    errors
+                  }) => (
+                    <Row>
+                      <Form noValidate onSubmit={handleSubmit}>
+                        <Form.Row>
+                          <Col>
+                            <CenteredCol>
+                              <Form.Group controlId="validationFormik01">
+                                <h6>Default <br/> Currency</h6>
+                                <CurrencyDropdown currencyType="default"/>
+                                <Form.Control
+                                  type="number"
+                                  name="defaultCurrencyConverter"
+                                  value={values.defaultCurrencyConverter}
+                                  onChange={handleChange}
+                                  isValid={touched.defaultCurrencyConverter && !errors.defaultCurrencyConverter}
+                                />
+                                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                              </Form.Group>
+                            </CenteredCol>
+                          </Col>
+                          <Col>
+                            <CenteredCol>
+                              <Button type="submit" variant="success">Change</Button>
+                              <Popover
+                                title="Need help?"
+                                description="Select the currency you need then enter
+                                  the required amount on the left to 
+                                  convert and get it on the right."
+                              />
+                            </CenteredCol>
+                          </Col>
+                          <Col>
+                            <CenteredCol>
+                              <h6>Exchange <br/> Currency</h6>
+                              <CurrencyDropdown currencyType="exchange"/>
+                              <ExchangeRate>
+                                {Math.round(currencyValue.resultExchangeValue * 100 + Number.EPSILON) / 100}
+                              </ExchangeRate>
+                            </CenteredCol>
+                          </Col>
+                        </Form.Row>
+                      </Form>
+                    </Row>
+                  )
+                }
+              </Formik> 
+            </CenteredCol>
           </Col>  
           <Col/>
         </Row>
@@ -129,7 +137,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
   );
 };
 
-const mapStateToProps = ({exchangeRates, exchangeCurrency}: IReducer): ICurrencyConverter => ({
+const mapStateToProps = ({exchangeRates, exchangeCurrency}: ICurrencyConverter) => ({
   exchangeRates,
   exchangeCurrency
 });

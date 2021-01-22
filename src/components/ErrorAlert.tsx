@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Alert, Container, Row, Col} from 'react-bootstrap';
 
-import {IReducer, IError} from '../types';
+import {IError} from '../types';
 import {ErrorContainer} from '../styled';
 
 const ErrorAlert: React.FC<IError> = ({error}) => {
@@ -30,7 +30,7 @@ const ErrorAlert: React.FC<IError> = ({error}) => {
   );
 };
 
-const mapStateToProps = ({error}: IReducer): IError => ({
+const mapStateToProps = ({error}: IError) => ({
   error
 });
 

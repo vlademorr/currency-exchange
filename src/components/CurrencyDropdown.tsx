@@ -6,7 +6,6 @@ import {changeDefaultCurrency, changeExchangeCurrency} from '../redux/ducks/exch
 import {DropdownCentered, DropdownScroll} from '../styled';
 import {
   ICurrencyDropdown, 
-  IReducer,
   ICurrencyDropdownState,
   IReducerCurrency, 
   IChangeCurrency
@@ -60,7 +59,7 @@ const mapStateToProps = ({
   baseCurrency,
   exchangeRates,
   exchangeCurrency
-}: IReducer): ICurrencyDropdownState => ({
+}: ICurrencyDropdownState) => ({
   baseCurrency,
   exchangeRates,
   exchangeCurrency

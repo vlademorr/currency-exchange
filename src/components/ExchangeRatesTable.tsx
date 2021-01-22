@@ -4,7 +4,7 @@ import {Container, Row, Col, Table} from 'react-bootstrap';
 
 import {Spinner, CurrencyDropdown, ExchangeRatesRow} from '.';
 
-import {ITableProps, IReducerCurrency, IReducer} from '../types';
+import {ITableProps, IReducerCurrency} from '../types';
 import {TableContainer, DropdownContainer} from '../styled';
 
 
@@ -68,7 +68,7 @@ const mapStateToProps = ({
   loading,
   baseCurrency,
   exchangeRates,
-}: IReducer): ITableProps => ({
+}: ITableProps) => ({
   loading,
   baseCurrency,
   exchangeRates,
