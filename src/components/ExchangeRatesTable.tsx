@@ -2,29 +2,30 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Container, Row, Col, Table} from 'react-bootstrap';
 
-import {Spinner, CurrencyDropdown, ExchangeRatesRow} from './';
+import {Spinner, CurrencyDropdown, ExchangeRatesRow} from '.';
 
+import {ITableProps, IReducerCurrency} from '../types';
 import {TableContainer, DropdownContainer} from '../styled';
 
-const ExchangeRatesTable = ({
+
+const ExchangeRatesTable: React.FC<ITableProps> = ({
   loading,
   baseCurrency,
   exchangeRates
 }) => {
-  const favoriteFiltered = exchangeRates.sort((a, b) => (
+  const favoriteFiltered = exchangeRates.sort((a: IReducerCurrency, b: IReducerCurrency) => (
     (a.favorite === b.favorite) ? 0 : a.favorite ? -1 : 1
   ));
 
   return (
-    (loading)
-    ?
-    <Container>
-      <Spinner/>
-    </Container>
-    :
-    <Container>
+    loading ? (
+      <Container>
+        <Spinner/>
+      </Container>
+    ) : (
+      <Container>
         <Row>
-          <Col></Col>
+          <Col/>
           <Col>
             <DropdownContainer>
               <h5>Default Currency: </h5>
@@ -45,7 +46,7 @@ const ExchangeRatesTable = ({
                 </thead>
                 <tbody>
                   {
-                    favoriteFiltered.map(currency => (
+                    favoriteFiltered.map((currency: IReducerCurrency) => (
                       <ExchangeRatesRow
                         currency={currency}
                         key={currency.currency}
@@ -56,24 +57,21 @@ const ExchangeRatesTable = ({
               </Table>
             </TableContainer>
           </Col>
-          <Col></Col>
+          <Col/>
         </Row>
-    </Container> 
+      </Container> 
+    )
   );
 };
 
-const mapStateToProps = (
-  {
-    loading,
-    baseCurrency,
-    exchangeRates,
-  }
-) => (
-  {
-    loading,
-    baseCurrency,
-    exchangeRates,
-  }
-);
+const mapStateToProps = ({
+  loading,
+  baseCurrency,
+  exchangeRates,
+}: ITableProps) => ({
+  loading,
+  baseCurrency,
+  exchangeRates,
+});
 
 export default connect(mapStateToProps)(ExchangeRatesTable);

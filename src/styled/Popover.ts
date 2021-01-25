@@ -3,6 +3,6 @@ const PopoverButton = {
   marginTop: '3px'
 };
 
-export{
+export {
   PopoverButton
 };

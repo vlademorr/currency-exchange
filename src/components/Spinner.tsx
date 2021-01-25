@@ -3,10 +3,8 @@ import {Spinner as SpinnerBootstrap} from 'react-bootstrap';
 
 import {SpinnerCentered} from '../styled';
 
-const Spinner = () => (
-  <SpinnerCentered>
-    <SpinnerBootstrap animation="border" variant="primary"/>
-  </SpinnerCentered>
+const Spinner: React.FC = () => (
+  <SpinnerCentered><SpinnerBootstrap animation="border" variant="primary"/></SpinnerCentered>
 );
 
 export default Spinner;

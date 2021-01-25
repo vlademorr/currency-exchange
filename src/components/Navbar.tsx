@@ -2,9 +2,9 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import {Navbar as NavbarBootstrap, Nav} from 'react-bootstrap';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const history = useHistory();
-  const linkTo = url => {
+  const linkTo = (url: string) => {
     history.push(`/${url}`);
   };
 

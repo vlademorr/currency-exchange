@@ -5,11 +5,12 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {ExchangeRatesTable, CurrencyConverter, Navbar, ErrorAlert} from './components';
 
 import {fetchExchangeRates} from './redux/ducks/exchange';
+import {IApp, IAppState} from './types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = ({fetchExchangeRates, baseCurrency}) => {
+const App: React.FC<IApp> = ({fetchExchangeRates, baseCurrency}) => {
   useEffect(() => {
-    fetchExchangeRates(baseCurrency.currency)
+    fetchExchangeRates(baseCurrency.currency);
   }, [fetchExchangeRates, baseCurrency]);
   
   return (
@@ -25,9 +26,9 @@ const App = ({fetchExchangeRates, baseCurrency}) => {
   );
 };
 
-const mapStateToProps = ({baseCurrency}) => (
-  {baseCurrency}
-);
+const mapStateToProps = ({baseCurrency}: IAppState) => ({
+  baseCurrency
+});
 
 const mapDispatchToProps = {
   fetchExchangeRates

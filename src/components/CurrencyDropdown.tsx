@@ -4,22 +4,28 @@ import {Dropdown} from 'react-bootstrap';
 
 import {changeDefaultCurrency, changeExchangeCurrency} from '../redux/ducks/exchange';
 import {DropdownCentered, DropdownScroll} from '../styled';
+import {
+  ICurrencyDropdown, 
+  ICurrencyDropdownState,
+  IReducerCurrency, 
+  IChangeCurrency
+} from '../types';
 
-const DropdownCurrencyList = ({
+const DropdownCurrencyList: React.FC<ICurrencyDropdown> = ({
   baseCurrency, 
-  exchangeCurrency,
   exchangeRates, 
+  exchangeCurrency,
   changeDefaultCurrency,
   changeExchangeCurrency,
   currencyType
 }) => {
-  let currencyAction;
-  let currencyValue = "";
+  let currencyAction: (currency: IReducerCurrency) => IChangeCurrency;
+  let currencyValue = '';
 
-  if (currencyType === "default") {
+  if (currencyType === 'default') {
     currencyAction = changeDefaultCurrency;
     currencyValue = baseCurrency.currency;
-  } else if (currencyType === "exchange") {
+  } else if (currencyType === 'exchange') {
     currencyAction = changeExchangeCurrency;
     currencyValue = exchangeCurrency.currency;
   }
@@ -33,15 +39,13 @@ const DropdownCurrencyList = ({
         <Dropdown.Menu>
           <DropdownScroll>
             {
-              exchangeRates.map(item => (
-                (
-                  <Dropdown.Item
-                    key={item.currency}
-                    onClick={() => currencyAction(item)}
-                  >
-                    {item.currency}
-                  </Dropdown.Item>
-                )
+              exchangeRates.map((item: IReducerCurrency) => (
+                <Dropdown.Item
+                  key={item.currency}
+                  onClick={() => currencyAction(item)}
+                >
+                  {item.currency}
+                </Dropdown.Item>
               ))
             }
             </DropdownScroll>
@@ -55,13 +59,11 @@ const mapStateToProps = ({
   baseCurrency,
   exchangeRates,
   exchangeCurrency
-}) => (
-  {
-    baseCurrency,
-    exchangeRates,
-    exchangeCurrency
-  }
-);
+}: ICurrencyDropdownState) => ({
+  baseCurrency,
+  exchangeRates,
+  exchangeCurrency
+});
 
 const mapDispatchToProps = {
   changeDefaultCurrency,

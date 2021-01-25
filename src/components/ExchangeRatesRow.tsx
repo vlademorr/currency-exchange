@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import {favoriteCurrency} from '../redux/ducks/exchange';
+import {ITablePropsRow} from '../types';
 import {getFavorite, setFavorite as setFavoriteLocalStorage} from '../utils/favorites';
 
-const ExchangeRatesRow = ({favoriteCurrency, currency}) => {
+const ExchangeRatesRow: React.FC<ITablePropsRow> = ({favoriteCurrency, currency}) => {
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
