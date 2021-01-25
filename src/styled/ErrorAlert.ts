@@ -6,7 +6,6 @@ const ErrorContainer = styled.div`
   position: absolute;
   z-index: 1;
   margin-top: 60px;
-  
 `;
 
 export {
