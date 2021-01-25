@@ -4,4 +4,4 @@ export interface ITableProps {
   loading: boolean,
   baseCurrency: IReducerCurrency,
   exchangeRates: IReducerCurrency[]
-};
+}

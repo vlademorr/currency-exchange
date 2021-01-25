@@ -3,10 +3,10 @@ const getFavorite = (currency: string): boolean => {
 
   try {
     return JSON.parse(favorites).indexOf(currency) !== -1;
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(error);
     return false;
-  };
+  }
 };
 
 const setFavorite = (currency: string): void => {
@@ -25,10 +25,10 @@ const setFavorite = (currency: string): void => {
     } else {
     favoritesArray.push(currency);
       localStorage.setItem('favorites', JSON.stringify(favoritesArray));
-    };
-  } catch (e) {
-    console.log(e);
-  };
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export {getFavorite, setFavorite};

@@ -2,7 +2,7 @@ export interface IReducerCurrency {
   currency: string,
   rate: number,
   favorite?: boolean
-};
+}
 
 export interface IReducer {
   exchangeRates: IReducerCurrency[],
@@ -10,4 +10,4 @@ export interface IReducer {
   exchangeCurrency: IReducerCurrency,
   loading: boolean,
   error: boolean
-};
+}

@@ -35,7 +35,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
             exchangeValue: item.rate,
             resultExchangeValue: currencyValue.userValue * item.rate
           });
-        };
+        }
     });
   },[
     exchangeRates.length,

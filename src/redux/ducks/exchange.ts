@@ -60,7 +60,7 @@ const takeEvery: any = Eff.takeEvery;
 
 function* watchFetchExchangeRates() {
   yield takeEvery(FETCH, fetchExchangeRatesAsync);
-};
+}
 
 function* fetchExchangeRatesAsync({payload}: {payload: string}) {
   try {
@@ -80,8 +80,8 @@ function* fetchExchangeRatesAsync({payload}: {payload: string}) {
   } catch (error) {
     console.log(error);
     yield Eff.put(requestExchangeRatesError());
-  };
-};
+  }
+}
 
 const initialState: IReducer = {
   exchangeRates: [],
@@ -128,7 +128,7 @@ const reducer = (state = initialState, action: ActionTypes): IReducer => {
     state.exchangeRates.forEach((item: IReducerCurrency) => {
       if (item.currency === action.payload) {
         item.favorite = !item.favorite
-      };
+      }
     });
     return {
       ...state,
@@ -136,7 +136,7 @@ const reducer = (state = initialState, action: ActionTypes): IReducer => {
     };
     default:
       return state;
-  };
+  }
 };
 
 export {

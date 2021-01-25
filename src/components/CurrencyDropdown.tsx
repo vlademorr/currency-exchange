@@ -28,7 +28,7 @@ const DropdownCurrencyList: React.FC<ICurrencyDropdown> = ({
   } else if (currencyType === 'exchange') {
     currencyAction = changeExchangeCurrency;
     currencyValue = exchangeCurrency.currency;
-  };
+  }
 
   return (
     <DropdownCentered>
