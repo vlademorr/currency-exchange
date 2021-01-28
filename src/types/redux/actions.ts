@@ -4,7 +4,7 @@ import {
   ERROR,
   SUCCESS,
   FETCH,
-  DUFAULT,
+  DEFAULT,
   EXCHANGE,
   FAVORITE
 } from '../../constants';
@@ -27,7 +27,7 @@ export interface IRequestExchangeRatesError {
 }
 
 export interface IChangeDefaultCurrency extends ICurrencyAction {
-  type: typeof DUFAULT
+  type: typeof DEFAULT
 }
 
 export interface IChangeExchangeCurrency extends ICurrencyAction {
@@ -37,7 +37,7 @@ export interface IChangeExchangeCurrency extends ICurrencyAction {
 export interface IFavoriteCurrency {
   type: typeof FAVORITE,
   payload: string
-};
+}
 
 export interface IFetchExchangeRates {
   type: typeof FETCH,

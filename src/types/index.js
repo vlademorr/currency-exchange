@@ -1,7 +1,7 @@
 import {IApp} from './components/App';
 import {IAppState} from './components/App';
 import {ITableProps} from './components/ExchangeRatesTable';
-import {ITablePropsRow} from './components/ExchangeRatesRow';
+import {IExchangeRatesRow} from './components/ExchangeRatesRow';
 import {ICurrencyDropdown} from './components/CurrencyDropdown';
 import {ICurrencyDropdownState} from './components/CurrencyDropdown';
 import {ICurrencyConverter} from './components/CurrencyConverter';
@@ -23,7 +23,7 @@ export {
   IApp,
   IAppState,
   ITableProps,
-  ITablePropsRow,
+  IExchangeRatesRow,
   ICurrencyDropdown,
   ICurrencyDropdownState,
   ICurrencyConverter,

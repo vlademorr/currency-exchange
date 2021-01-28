@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
 import {Alert, Container, Row, Col} from 'react-bootstrap';
 
-import {IError} from '../types';
-import {ErrorContainer} from '../styled';
+import {IError} from '../../types/index';
+import {ErrorContainer} from '../../styled/index';
 
 const ErrorAlert: React.FC<IError> = ({error}) => {
   const [show, setShow] = useState(true);
@@ -19,7 +18,7 @@ const ErrorAlert: React.FC<IError> = ({error}) => {
           <Alert variant="danger" onClose={() => setShow(false)} dismissible>
             <Alert.Heading>Error</Alert.Heading>
             <p>
-              Somthing was wrong
+              Something was wrong
             </p>
           </Alert>
         </ErrorContainer>
@@ -30,8 +29,4 @@ const ErrorAlert: React.FC<IError> = ({error}) => {
   );
 };
 
-const mapStateToProps = ({error}: IError) => ({
-  error
-});
-
-export default connect(mapStateToProps)(ErrorAlert);
+export default ErrorAlert;

@@ -1,37 +1,31 @@
 import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-import {ExchangeRatesTable, CurrencyConverter, Navbar, ErrorAlert} from './components';
+import {
+  ExchangeRatesTableContainer,
+  CurrencyConverterContainer,
+  ErrorAlertContainer,
+  Navbar
+} from './components';
 
-import {fetchExchangeRates} from './redux/ducks/exchange';
-import {IApp, IAppState} from './types';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {IApp} from './types/components/App';
 
 const App: React.FC<IApp> = ({fetchExchangeRates, baseCurrency}) => {
   useEffect(() => {
     fetchExchangeRates(baseCurrency.currency);
   }, [fetchExchangeRates, baseCurrency]);
-  
+
   return (
     <Router>
-      <ErrorAlert/>
+      <ErrorAlertContainer/>
       <Navbar/>
       <Switch>
-        <Route path="/" exact component={ExchangeRatesTable}/>
-        <Route path="/ExchangeRates" exact component={ExchangeRatesTable}/>
-        <Route path="/CurrencyConverter" exact component={CurrencyConverter}/>
+        <Route path="/" exact component={ExchangeRatesTableContainer}/>
+        <Route path="/ExchangeRates" exact component={ExchangeRatesTableContainer}/>
+        <Route path="/CurrencyConverter" exact component={CurrencyConverterContainer}/>
       </Switch>
     </Router>
-  );
+  )
 };
 
-const mapStateToProps = ({baseCurrency}: IAppState) => ({
-  baseCurrency
-});
-
-const mapDispatchToProps = {
-  fetchExchangeRates
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

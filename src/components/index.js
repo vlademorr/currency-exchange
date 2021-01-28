@@ -1,19 +1,19 @@
-import ExchangeRatesRow from './ExchangeRatesRow';
-import CurrencyConverter from './CurrencyConverter';
-import ExchangeRatesTable from './ExchangeRatesTable';
-import CurrencyDropdown from './CurrencyDropdown';
-import Spinner from './Spinner';
+import CurrencyConverterContainer from './CurrencyConverter/CurrencyConverterContainer';
+import CurrencyDropdownContainer from './CurrencyDropdown/CurrencyDropdownContainer';
+import ErrorAlertContainer from './ErrorAlert/ErrorAlertContainer';
+import ExchangeRatesRowContainer from './ExchangeRatesRow/ExchangeRatesRowContainer';
+import ExchangeRatesTableContainer from './ExchangeRatesTable/ExchangeRatesTableContainer';
 import Navbar from './Navbar';
 import Popover from './Popover';
-import ErrorAlert from './ErrorAlert';
+import Spinner from './Spinner';
 
 export {
-  ExchangeRatesRow,
-  CurrencyConverter,
-  ExchangeRatesTable,
-  CurrencyDropdown,
-  Spinner,
+  CurrencyConverterContainer,
+  CurrencyDropdownContainer,
+  ErrorAlertContainer,
+  ExchangeRatesRowContainer,
+  ExchangeRatesTableContainer,
   Navbar,
   Popover,
-  ErrorAlert
+  Spinner
 };

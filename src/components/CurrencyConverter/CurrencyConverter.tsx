@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {connect} from 'react-redux';
+import React, {useEffect, useState} from 'react';
 import {Formik} from 'formik';
-import * as yup from 'yup'; 
+import * as yup from 'yup';
 import {
   Container,
   Form,
@@ -11,10 +10,10 @@ import {
 } 
 from 'react-bootstrap';
 
-import {Spinner, CurrencyDropdown, Popover} from '.';
+import {Spinner, CurrencyDropdownContainer, Popover} from '../index';
 
-import {CenteredCol, ExchangeRate} from '../styled';
-import {ICurrencyConverter, IReducerCurrency} from '../types';
+import {ICurrencyConverter, IReducerCurrency} from '../../types';
+import {CenteredCol, ExchangeRate} from '../../styled/index';
 
 const CurrencyConverter: React.FC<ICurrencyConverter> = ({
   exchangeRates,
@@ -30,21 +29,21 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
     if (!exchangeRates.length) return;
     exchangeRates.forEach((item: IReducerCurrency) => {
       if (item.currency === exchangeCurrency.currency) {
-          setCurrencyValue({
-            userValue: currencyValue.userValue, 
-            exchangeValue: item.rate,
-            resultExchangeValue: currencyValue.userValue * item.rate
-          });
-        }
+        setCurrencyValue({
+          userValue: currencyValue.userValue,
+          exchangeValue: item.rate,
+          resultExchangeValue: currencyValue.userValue * item.rate
+        });
+      }
     });
-  },[
+  }, [
     exchangeRates.length,
     exchangeCurrency.currency,
     exchangeRates,
     currencyValue.userValue
   ]);
 
-  const onSubmit = ({defaultCurrencyConverter}: {defaultCurrencyConverter: number}) => {
+  const onSubmit = ({defaultCurrencyConverter}: { defaultCurrencyConverter: number }) => {
     setCurrencyValue({
       userValue: defaultCurrencyConverter,
       exchangeValue: currencyValue.exchangeValue,
@@ -66,7 +65,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
               <h4>Currency Converter</h4>
               <Formik
                 validationSchema={
-                  yup.object({    
+                  yup.object({
                     defaultCurrencyConverter: yup.number().required()
                   })
                 }
@@ -77,12 +76,12 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
               >
                 {
                   ({
-                    handleSubmit,
-                    handleChange,
-                    values,
-                    touched,
-                    errors
-                  }) => (
+                     handleSubmit,
+                     handleChange,
+                     values,
+                     touched,
+                     errors
+                   }) => (
                     <Row>
                       <Form noValidate onSubmit={handleSubmit}>
                         <Form.Row>
@@ -90,7 +89,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
                             <CenteredCol>
                               <Form.Group controlId="validationFormik01">
                                 <h6>Default <br/> Currency</h6>
-                                <CurrencyDropdown currencyType="default"/>
+                                <CurrencyDropdownContainer currencyType="default"/>
                                 <Form.Control
                                   type="number"
                                   name="defaultCurrencyConverter"
@@ -108,7 +107,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
                               <Popover
                                 title="Need help?"
                                 description="Select the currency you need then enter
-                                  the required amount on the left to 
+                                  the required amount on the left to
                                   convert and get it on the right."
                               />
                             </CenteredCol>
@@ -116,7 +115,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
                           <Col>
                             <CenteredCol>
                               <h6>Exchange <br/> Currency</h6>
-                              <CurrencyDropdown currencyType="exchange"/>
+                              <CurrencyDropdownContainer currencyType="exchange"/>
                               <ExchangeRate>
                                 {Math.round(currencyValue.resultExchangeValue * 100 + Number.EPSILON) / 100}
                               </ExchangeRate>
@@ -127,19 +126,14 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
                     </Row>
                   )
                 }
-              </Formik> 
+              </Formik>
             </CenteredCol>
-          </Col>  
+          </Col>
           <Col/>
         </Row>
       </Container>
     )
-  );
+  )
 };
 
-const mapStateToProps = ({exchangeRates, exchangeCurrency}: ICurrencyConverter) => ({
-  exchangeRates,
-  exchangeCurrency
-});
-
-export default connect(mapStateToProps)(CurrencyConverter);
+export default CurrencyConverter;

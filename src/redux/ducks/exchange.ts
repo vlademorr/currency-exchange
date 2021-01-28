@@ -1,6 +1,6 @@
 import * as Eff from 'redux-saga/effects';
 
-import {getFavorite} from '../../utils/favorites';
+import {getExchangeRates} from '../../services/exchangeRatesService';
 import {
   IReducer,
   IReducerCurrency,
@@ -18,7 +18,7 @@ import {
   SUCCESS, 
   ERROR, 
   FETCH, 
-  DUFAULT, 
+  DEFAULT,
   EXCHANGE,
   FAVORITE
 } from '../../constants';
@@ -42,7 +42,7 @@ const fetchExchangeRates = (baseCurrency: string): IFetchExchangeRates => ({
 });
 
 const changeDefaultCurrency = (defaultCurrency: IReducerCurrency): IChangeDefaultCurrency => ({
-  type: DUFAULT,
+  type: DEFAULT,
   payload: defaultCurrency
 });
 
@@ -65,17 +65,7 @@ function* watchFetchExchangeRates() {
 function* fetchExchangeRatesAsync({payload}: {payload: string}) {
   try {
     yield Eff.put(requestExchangeRates());
-    const data = yield Eff.call(() => {
-      return fetch('https://api.exchangeratesapi.io/latest?base=' + payload)
-      .then(resp => resp.json())
-      .then(({rates}) => {
-        return Object.keys(rates).map(item => ({
-          currency: item,
-          rate: rates[item],
-          favorite: getFavorite(item)
-        }));
-      });
-    });
+    const data = yield Eff.call(() => getExchangeRates(payload));
     yield Eff.put(requestExchangeRatesSuccess(data));
   } catch (error) {
     console.log(error);
@@ -114,7 +104,7 @@ const reducer = (state = initialState, action: ActionTypes): IReducer => {
         loading: false,
         error: true
       };
-    case DUFAULT:
+    case DEFAULT:
     return {
       ...state,
       baseCurrency: action.payload
@@ -148,5 +138,6 @@ export {
   changeDefaultCurrency,
   changeExchangeCurrency,
   favoriteCurrency,
-  watchFetchExchangeRates
+  watchFetchExchangeRates,
+  fetchExchangeRatesAsync
 };

@@ -1,11 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {Container, Row, Col, Table} from 'react-bootstrap';
 
-import {Spinner, CurrencyDropdown, ExchangeRatesRow} from '.';
+import {Spinner, CurrencyDropdownContainer, ExchangeRatesRowContainer} from '../index';
 
-import {ITableProps, IReducerCurrency} from '../types';
-import {TableContainer, DropdownContainer} from '../styled';
+import {ITableProps, IReducerCurrency} from '../../types/index';
+import {TableContainer, DropdownContainer} from '../../styled/index';
 
 
 const ExchangeRatesTable: React.FC<ITableProps> = ({
@@ -29,7 +28,7 @@ const ExchangeRatesTable: React.FC<ITableProps> = ({
           <Col>
             <DropdownContainer>
               <h5>Default Currency: </h5>
-              <CurrencyDropdown currencyType="default"/>
+              <CurrencyDropdownContainer currencyType="default"/>
             </DropdownContainer>
             <TableContainer>
               <h6>
@@ -47,7 +46,7 @@ const ExchangeRatesTable: React.FC<ITableProps> = ({
                 <tbody>
                   {
                     favoriteFiltered.map((currency: IReducerCurrency) => (
-                      <ExchangeRatesRow
+                      <ExchangeRatesRowContainer
                         currency={currency}
                         key={currency.currency}
                       />
@@ -64,14 +63,4 @@ const ExchangeRatesTable: React.FC<ITableProps> = ({
   );
 };
 
-const mapStateToProps = ({
-  loading,
-  baseCurrency,
-  exchangeRates,
-}: ITableProps) => ({
-  loading,
-  baseCurrency,
-  exchangeRates,
-});
-
-export default connect(mapStateToProps)(ExchangeRatesTable);
+export default ExchangeRatesTable;
