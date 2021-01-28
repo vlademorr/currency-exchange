@@ -1,23 +1,20 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {Dropdown} from 'react-bootstrap';
 
-import {changeDefaultCurrency, changeExchangeCurrency} from '../redux/ducks/exchange';
-import {DropdownCentered, DropdownScroll} from '../styled';
+import {DropdownCentered, DropdownScroll} from '../../styled/index';
 import {
-  ICurrencyDropdown, 
-  ICurrencyDropdownState,
-  IReducerCurrency, 
+  ICurrencyDropdown,
+  IReducerCurrency,
   IChangeCurrency
-} from '../types';
+} from '../../types/index';
 
-const DropdownCurrencyList: React.FC<ICurrencyDropdown> = ({
-  baseCurrency, 
-  exchangeRates, 
+const DropdownCurrency: React.FC<ICurrencyDropdown> = ({
+  baseCurrency,
+  currencyType,
+  exchangeRates,
   exchangeCurrency,
   changeDefaultCurrency,
-  changeExchangeCurrency,
-  currencyType
+  changeExchangeCurrency
 }) => {
   let currencyAction: (currency: IReducerCurrency) => IChangeCurrency;
   let currencyValue = '';
@@ -55,19 +52,4 @@ const DropdownCurrencyList: React.FC<ICurrencyDropdown> = ({
   );
 };
 
-const mapStateToProps = ({
-  baseCurrency,
-  exchangeRates,
-  exchangeCurrency
-}: ICurrencyDropdownState) => ({
-  baseCurrency,
-  exchangeRates,
-  exchangeCurrency
-});
-
-const mapDispatchToProps = {
-  changeDefaultCurrency,
-  changeExchangeCurrency
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DropdownCurrencyList);
+export default DropdownCurrency;

@@ -1,6 +1,6 @@
 import {IFavoriteCurrency, IReducerCurrency} from '..';
 
-export interface ITablePropsRow {
+export interface IExchangeRatesRow {
   favoriteCurrency: (currency: string) => IFavoriteCurrency,
   currency: IReducerCurrency
 }
