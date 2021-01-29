@@ -17,12 +17,12 @@ export interface IRequestExchangeRates{
   type: typeof REQUEST
 }
 
-export interface IRequestExchangeRatesSuccess{
+export interface IExchangeRatesSuccess{
   type: typeof SUCCESS,
   payload: IReducerCurrency[]
 }
 
-export interface IRequestExchangeRatesError {
+export interface IExchangeRatesError {
   type: typeof ERROR
 }
 
@@ -47,5 +47,5 @@ export interface IFetchExchangeRates {
 export type IChangeCurrency = IChangeDefaultCurrency | IChangeExchangeCurrency;
 
 export type ActionTypes = 
-IRequestExchangeRates | IRequestExchangeRatesSuccess | IRequestExchangeRatesError |
+IRequestExchangeRates | IExchangeRatesSuccess | IExchangeRatesError |
 IChangeDefaultCurrency | IChangeExchangeCurrency | IFavoriteCurrency | IFetchExchangeRates;

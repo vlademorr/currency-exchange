@@ -5,8 +5,8 @@ import '@babel/polyfill';
 import {
   watchFetchExchangeRates,
   fetchExchangeRatesAsync,
-  requestExchangeRatesSuccess,
-  requestExchangeRatesError,
+  exchangeRatesSuccess,
+  exchangeRatesError,
   requestExchangeRates as requestExchangeRatesAction
 } from '../../redux/ducks/exchange';
 import * as exchangeRatesService from '../../services/exchangeRatesService';
@@ -62,7 +62,7 @@ describe('watchFetchExchangeRates', () => {
 
     expect(dispatched).toEqual([
       requestExchangeRatesAction(),
-      requestExchangeRatesSuccess(dummyExchangeRates),
+      exchangeRatesSuccess(dummyExchangeRates),
     ]);
 
     requestExchangeRates.mockClear();
@@ -84,7 +84,7 @@ describe('watchFetchExchangeRates', () => {
 
     expect(dispatched).toEqual([
       requestExchangeRatesAction(),
-      requestExchangeRatesError()
+      exchangeRatesError()
     ]);
 
     requestExchangeRates.mockClear();

@@ -5,8 +5,8 @@ import {
   IReducer,
   IReducerCurrency,
   IRequestExchangeRates,
-  IRequestExchangeRatesSuccess,
-  IRequestExchangeRatesError,
+  IExchangeRatesSuccess,
+  IExchangeRatesError,
   IFetchExchangeRates,
   IChangeDefaultCurrency,
   IChangeExchangeCurrency,
@@ -27,12 +27,12 @@ const requestExchangeRates = (): IRequestExchangeRates => ({
   type: REQUEST
 });
 
-const requestExchangeRatesSuccess = (data: IReducerCurrency[]): IRequestExchangeRatesSuccess => ({
+const exchangeRatesSuccess = (data: IReducerCurrency[]): IExchangeRatesSuccess => ({
   type: SUCCESS,
   payload: data
 });
 
-const requestExchangeRatesError  = (): IRequestExchangeRatesError => ({
+const exchangeRatesError  = (): IExchangeRatesError => ({
   type: ERROR
 });
 
@@ -66,10 +66,10 @@ function* fetchExchangeRatesAsync({payload}: {payload: string}) {
   try {
     yield Eff.put(requestExchangeRates());
     const data = yield Eff.call(() => getExchangeRates(payload));
-    yield Eff.put(requestExchangeRatesSuccess(data));
+    yield Eff.put(exchangeRatesSuccess(data));
   } catch (error) {
-    console.log(error);
-    yield Eff.put(requestExchangeRatesError());
+    console.error(error);
+    yield Eff.put(exchangeRatesError());
   }
 }
 
@@ -132,8 +132,8 @@ const reducer = (state = initialState, action: ActionTypes): IReducer => {
 export {
   reducer,
   requestExchangeRates,
-  requestExchangeRatesSuccess,
-  requestExchangeRatesError,
+  exchangeRatesSuccess,
+  exchangeRatesError,
   fetchExchangeRates,
   changeDefaultCurrency,
   changeExchangeCurrency,

@@ -60,7 +60,7 @@ const CurrencyConverter: React.FC<ICurrencyConverter> = ({
       <Container>
         <Row>
           <Col/>
-          <Col xs={3} sm={7} md={5} lg={3} xl={3}>
+          <Col xs={3} sm={7} md={5} lg={4} xl={3}>
             <CenteredCol>
               <h4>Currency Converter</h4>
               <Formik

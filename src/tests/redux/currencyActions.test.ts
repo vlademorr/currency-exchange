@@ -1,7 +1,7 @@
 import {
   requestExchangeRates,
-  requestExchangeRatesSuccess,
-  requestExchangeRatesError,
+  exchangeRatesSuccess,
+  exchangeRatesError,
   fetchExchangeRates,
   changeDefaultCurrency,
   changeExchangeCurrency,
@@ -41,11 +41,11 @@ describe('currency exchange actions', () => {
       }
     ];
 
-    expect(requestExchangeRatesSuccess(data)).toStrictEqual({type: SUCCESS, payload: data});
+    expect(exchangeRatesSuccess(data)).toStrictEqual({type: SUCCESS, payload: data});
   });
 
   it('exchange rates error action', () => {
-    expect(requestExchangeRatesError()).toStrictEqual({type: ERROR});
+    expect(exchangeRatesError()).toStrictEqual({type: ERROR});
   });
 
   it('fetch exchange rates action', () => {

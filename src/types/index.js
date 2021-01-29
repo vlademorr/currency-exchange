@@ -11,8 +11,8 @@ import {IReducer} from './redux/reducer';
 import {IReducerCurrency} from './redux/reducer';
 import {IFetchExchangeRates} from './redux/actions';
 import {IRequestExchangeRates} from './redux/actions';
-import {IRequestExchangeRatesSuccess} from './redux/actions';
-import {IRequestExchangeRatesError} from './redux/actions';
+import {IExchangeRatesSuccess} from './redux/actions';
+import {IExchangeRatesError} from './redux/actions';
 import {IChangeDefaultCurrency} from './redux/actions';
 import {IChangeExchangeCurrency} from './redux/actions';
 import {IFavoriteCurrency} from './redux/actions';
@@ -33,8 +33,8 @@ export {
   IReducerCurrency,
   IFetchExchangeRates,
   IRequestExchangeRates,
-  IRequestExchangeRatesSuccess,
-  IRequestExchangeRatesError,
+  IExchangeRatesSuccess,
+  IExchangeRatesError,
   IChangeDefaultCurrency,
   IChangeExchangeCurrency,
   IFavoriteCurrency,
