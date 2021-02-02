@@ -1,5 +1,5 @@
 import {ExchangeRate, CenteredCol} from './CurrencyConverter';
-import {DropdownCentered, DropdownScroll} from './CurrencyDropdown';
+import {DropdownCentered} from './CurrencyDropdown';
 import {TableContainer, DropdownContainer} from './ExchsngeRatesTable';
 import {PopoverButton} from './Popover';
 import {SpinnerCentered} from './Spinner';
@@ -9,7 +9,6 @@ export {
   ExchangeRate,
   CenteredCol,
   DropdownCentered,
-  DropdownScroll,
   TableContainer,
   DropdownContainer,
   PopoverButton,

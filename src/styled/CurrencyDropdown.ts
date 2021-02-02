@@ -6,14 +6,6 @@ const DropdownCentered = styled.div`
   margin: 5px 0;
 `;
 
-const DropdownScroll = styled.div`
-  height: 250px;
-  overflow: scroll;
-  overflow-x: hidden;
-  text-align: center;
-`;
-
 export {
-  DropdownCentered,
-  DropdownScroll
+  DropdownCentered
 };

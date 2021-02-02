@@ -8,7 +8,9 @@ const DropdownContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  color: #007bff;
+  margin: 0 auto;
+  color: #3f51b5;
+  max-width: 280px;
 `;
 
 export {
