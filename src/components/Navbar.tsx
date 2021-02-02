@@ -48,6 +48,12 @@ const Navbar: React.FC = () => {
           >
             Currency Converter
           </Button>
+          <Button
+            color="inherit"
+            onClick={() => linkTo("CurrencyChart")}
+          >
+            Currency Chart
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

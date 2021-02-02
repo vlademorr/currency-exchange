@@ -18,6 +18,7 @@ import {IChangeExchangeCurrency} from './redux/actions';
 import {IFavoriteCurrency} from './redux/actions';
 import {IChangeCurrency} from './redux/actions';
 import {ActionTypes} from './redux/actions';
+import {ICurrencyChart} from './components/CurrencyChart';
 
 export {
   IApp,
@@ -39,5 +40,6 @@ export {
   IChangeExchangeCurrency,
   IFavoriteCurrency,
   IChangeCurrency,
-  ActionTypes
+  ActionTypes,
+  ICurrencyChart
 };

@@ -3,6 +3,7 @@ import CurrencyDropdownContainer from './CurrencyDropdown/CurrencyDropdownContai
 import ErrorAlertContainer from './ErrorAlert/ErrorAlertContainer';
 import ExchangeRatesRowContainer from './ExchangeRatesRow/ExchangeRatesRowContainer';
 import ExchangeRatesTableContainer from './ExchangeRatesTable/ExchangeRatesTableContainer';
+import CurrencyChartContainer from './CurrencyChart/CurrencyChartContainer';
 import Navbar from './Navbar';
 import Popover from './Popover';
 import Spinner from './Spinner';
@@ -13,6 +14,7 @@ export {
   ErrorAlertContainer,
   ExchangeRatesRowContainer,
   ExchangeRatesTableContainer,
+  CurrencyChartContainer,
   Navbar,
   Popover,
   Spinner

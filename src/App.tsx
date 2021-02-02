@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {
   ExchangeRatesTableContainer,
   CurrencyConverterContainer,
+  CurrencyChartContainer,
   ErrorAlertContainer,
   Navbar
 } from './components';
@@ -23,6 +24,7 @@ const App: React.FC<IApp> = ({fetchExchangeRates, baseCurrency}) => {
         <Route path="/" exact component={ExchangeRatesTableContainer}/>
         <Route path="/ExchangeRates" exact component={ExchangeRatesTableContainer}/>
         <Route path="/CurrencyConverter" exact component={CurrencyConverterContainer}/>
+        <Route path="/CurrencyChart" exact component={CurrencyChartContainer}/>
       </Switch>
     </Router>
   )
